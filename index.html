@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>젠더리빌 빙고 이벤트</title>
+
+    <!-- FontAwesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Toast Notification -->
+    <div id="toast">
+      <i class="fa-solid fa-circle-check" style="color: #4ade80"></i>
+      <span id="toast-msg">메시지</span>
+    </div>
+
+    <main>
+      <!-- 1. ORGANIZER MODE (주최자 설정 화면) -->
+      <section id="organizer-section">
+        <div class="organizer-header">
+          <div class="icon-badge animate-float">👶🎁</div>
+          <h1 class="font-title">젠더리빌 빙고 만들기</h1>
+          <p>아기의 태명과 성별을 입력하고<br />4x4 빙고 게임을 생성하세요!</p>
+        </div>
+
+        <form id="organizer-form">
+          <div class="form-group">
+            <label for="baby-name">
+              <i class="fa-solid fa-baby" style="color: #f472b6"></i> 아기 태명
+            </label>
+            <input
+              type="text"
+              id="baby-name"
+              required
+              maxlength="10"
+              placeholder="예: 꼬미, 한방이"
+              class="form-input font-title"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>
+              <i class="fa-solid fa-venus-mars" style="color: #60a5fa"></i> 아기
+              성별
+            </label>
+            <div class="radio-grid">
+              <label class="radio-card boy">
+                <input type="radio" name="gender" value="boy" required />
+                <div class="radio-content font-title">
+                  <i class="fa-solid fa-mars radio-icon"></i>
+                  왕자님
+                </div>
+              </label>
+              <label class="radio-card girl">
+                <input type="radio" name="gender" value="girl" required />
+                <div class="radio-content font-title">
+                  <i class="fa-solid fa-venus radio-icon"></i>
+                  공주님
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-primary font-title">
+            공유 링크 생성
+          </button>
+        </form>
+
+        <!-- Generated URL Box -->
+        <div id="generated-link-box" class="share-link-box hidden">
+          <label class="share-label">생성된 공유 링크</label>
+          <div class="url-input-container">
+            <input type="text" id="share-url" readonly />
+            <button type="button" id="copy-btn" class="btn-copy font-title">
+              <i class="fa-solid fa-copy"></i> 복사
+            </button>
+          </div>
+          <button type="button" id="start-btn" class="btn-start-now font-title">
+            바로 게임 시작
+          </button>
+        </div>
+      </section>
+
+      <!-- 2. GUEST GAME MODE (참여자 빙고 게임 화면) -->
+      <section id="game-section" class="hidden">
+        <div class="game-header">
+          <span class="game-badge">Gender Reveal 4x4 Bingo</span>
+          <h2 class="font-title">
+            <span id="display-baby-name" class="baby-name-text">아기</span>의
+            성별을 맞춰보세요!
+          </h2>
+          <p>카드를 뒤집어 완성된 빙고 한 줄을 찾으세요!</p>
+        </div>
+
+        <div id="bingo-board"></div>
+      </section>
+
+      <!-- 3. RESULT SCREEN (성별 공개 화면) -->
+      <section id="result-section" class="hidden">
+        <div id="fx-layer" class="fx-layer"></div>
+        <div class="result-content">
+          <div id="gender-badge" class="result-badge font-title"></div>
+          <div id="gender-emoji" class="result-emoji"></div>
+          <h3 id="gender-title-text" class="result-title font-title"></h3>
+          <p class="result-msg">
+            축하해주세요! 빙고 한 줄과 함께<br />소중한 아기의 소식이
+            도착했습니다 ❤️
+          </p>
+          <div class="btn-action-group font-title">
+            <button type="button" id="share-btn" class="btn-share">
+              <i class="fa-solid fa-share-nodes"></i> 축하 결과 공유하기
+            </button>
+            <button type="button" id="restart-btn" class="btn-restart">
+              🔄 빙고 다시하기
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Gender Reveal Bingo Game &copy; 2026 진호</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
